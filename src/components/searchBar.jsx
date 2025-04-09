@@ -1,11 +1,11 @@
 import React from 'react';
 
-function SearchBar({ searchTerm, setSearchTerm }) {
+function SearchBar({ searchTerm, onChange }) {
     return (
         <input
             type="text"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={onChange}
             placeholder="Buscar productos..."
             className="w-full p-2 border border-gray-300 rounded"
         />

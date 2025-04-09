@@ -8,7 +8,6 @@ import SortButton from './components/sortButton';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [sortOrder, setSortOrder] = useState('');
   const productos = [
     {
       id: 1,
