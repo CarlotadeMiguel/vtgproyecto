@@ -1,14 +1,20 @@
+import './App.css';
+import Header from './components/header';
+import Footer from './components/footer';
 import Button from './components/button';
-import './App.css'
 import Grid from './components/grid';
 
 function App() {
   return (
     <>
-      <Button />
-      <Grid />
+      <div className="min-h-screen">
+        <Header />
+        <Button />
+        <Grid />
+        <Footer />
+      </div>
     </>
   )
 }
 
-export default App
+export default App;
