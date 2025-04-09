@@ -7,6 +7,15 @@ function App() {
     <>
       <Button />
       <Grid />
+      <div>
+        <footer>
+          <ul>
+            <li>Facebook</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+          </ul>
+        </footer>
+      </div>
     </>
   )
 }
