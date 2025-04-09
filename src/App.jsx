@@ -18,6 +18,15 @@ function App() {
       </div>
       <Button />
       <Grid />
+      <div>
+        <footer>
+          <ul>
+            <li>Facebook</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+          </ul>
+        </footer>
+      </div>
     </>
   )
 }
