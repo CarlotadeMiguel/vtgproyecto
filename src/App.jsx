@@ -1,35 +1,116 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import { useState } from 'react';
+import Header from './components/header';
+import Footer from './components/footer';
+import ProductCard from './components/productCard';
+import SearchBar from './components/searchBar';
+import SortButton from './components/sortButton';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortOrder, setSortOrder] = useState('');
+  const productos = [
+    {
+      id: 1,
+      nombre: 'Camiseta',
+      precio: 19.99,
+      imagen: 'https://picsum.photos/151',
+    },
+    {
+      id: 2,
+      nombre: 'Pantalón',
+      precio: 29.99,
+      imagen: 'https://picsum.photos/155',
+    },
+    {
+      id: 3,
+      nombre: 'Zapatos',
+      precio: 49.99,
+      imagen: 'https://picsum.photos/153',
+    },
+    {
+      id: 4,
+      nombre: 'Camisa',
+      precio: 19.99,
+      imagen: 'https://picsum.photos/161',
+    },
+    {
+      id: 5,
+      nombre: 'Pantalones',
+      precio: 29.99,
+      imagen: 'https://picsum.photos/159',
+    },
+    {
+      id: 6,
+      nombre: 'Zapatillas',
+      precio: 49.99,
+      imagen: 'https://picsum.photos/157',
+    },
+  ];
+
+  const [filteredProducts, setFilteredProducts] = useState(productos);
+
+  const handleSearch = (term) => {
+    setSearchTerm(term);
+    setFilteredProducts(
+      productos.filter((product) =>
+        product.nombre.toLowerCase().includes(term.toLowerCase())
+      )
+    );
+  };
+
+  const handleSort = (order) => {
+    const sortedProducts = [...filteredProducts].sort((a, b) => {
+      if (order === 'asc') {
+        return a.precio - b.precio;
+      } else {
+        return b.precio - a.precio;
+      }
+    });
+    setFilteredProducts(sortedProducts);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      <div className="min-h-screen bg-gray-100 p-6">
+
+        <div className="flex justify-between items-center mb-4">
+          <div className="flex-grow mr-4">
+            <SearchBar
+              searchTerm={searchTerm}
+              onChange={(e) => handleSearch(e.target.value)}
+              className="h-10 w-full px-4 border border-gray-300 rounded"
+            />
+          </div>
+          <div className="flex space-x-2">
+            <SortButton
+              direction="M4.5 15.75l7.5-7.5 7.5 7.5"
+              onClick={() => handleSort('asc')}
+              className="h-10 w-10"
+            />
+            <SortButton
+              direction="M19.5 8.25l-7.5 7.5-7.5-7.5"
+              onClick={() => handleSort('desc')}
+              className="h-10 w-10"
+            />
+          </div>
+        </div>
+
+        {filteredProducts.length > 0 ? (
+          <main className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredProducts.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </main>
+        ) : (
+          <p className="text-center text-gray-500">No se encontraron productos.</p>
+        )}
+
+      </div >
+      <Footer />
     </>
   )
 }
 
-export default App
+export default App;
