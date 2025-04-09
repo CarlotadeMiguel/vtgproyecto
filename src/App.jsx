@@ -76,10 +76,24 @@ function App() {
       <div className="min-h-screen bg-gray-100 p-6">
 
         <div className="flex justify-between items-center mb-4">
-          <SearchBar searchTerm={searchTerm} onChange={(e) => handleSearch(e.target.value)} />
-          <div className="flex space-x-2 mt-4 md:mt-0">
-            <SortButton direction='M4.5 15.75l7.5-7.5 7.5 7.5' onClick={() => handleSort('asc')} />
-            <SortButton direction='M19.5 8.25l-7.5 7.5-7.5-7.5' onClick={() => handleSort('desc')} />
+          <div className="flex-grow mr-4">
+            <SearchBar
+              searchTerm={searchTerm}
+              onChange={(e) => handleSearch(e.target.value)}
+              className="h-10 w-full px-4 border border-gray-300 rounded"
+            />
+          </div>
+          <div className="flex space-x-2">
+            <SortButton
+              direction="M4.5 15.75l7.5-7.5 7.5 7.5"
+              onClick={() => handleSort('asc')}
+              className="h-10 w-10"
+            />
+            <SortButton
+              direction="M19.5 8.25l-7.5 7.5-7.5-7.5"
+              onClick={() => handleSort('desc')}
+              className="h-10 w-10"
+            />
           </div>
         </div>
 
