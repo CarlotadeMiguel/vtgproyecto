@@ -9,7 +9,7 @@ function ProductCard({ product }) {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-lg overflow-hidden max-w-sm mx-auto">
+    <div className="bg-white shadow-md rounded-lg overflow-hidden max-w-sm mx-auto w-full sm:w-80 md:w-96 lg:w-[500px]">
       <img
         src={product.imagen}
         alt={product.nombre}
@@ -21,7 +21,7 @@ function ProductCard({ product }) {
         <div className="flex justify-between items-center mt-4">
           <button
             onClick={handleLike}
-            className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition"
+            className="mi-boton bg-indigo-400 hover:bg-indigo-700 transition"
           >
             Me gusta ({likes})
           </button>

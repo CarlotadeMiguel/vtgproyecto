@@ -27,14 +27,33 @@ function App() {
       precio: 49.99,
       imagen: 'https://picsum.photos/153',
     },
+    {
+      id: 4,
+      nombre: 'Camisa',
+      precio: 19.99,
+      imagen: 'https://picsum.photos/161',
+    },
+    {
+      id: 5,
+      nombre: 'Pantalones',
+      precio: 29.99,
+      imagen: 'https://picsum.photos/159',
+    },
+    {
+      id: 6,
+      nombre: 'Zapatillas',
+      precio: 49.99,
+      imagen: 'https://picsum.photos/157',
+    },
   ];
   const filteredProducts = productos.filter((product) =>
     product.nombre.toLowerCase().includes(searchTerm.toLowerCase())
   );
   return (
     <>
+      <Header />
       <div className="min-h-screen bg-gray-100 p-6">
-        <Header />
+
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
         {filteredProducts.length > 0 ? (
@@ -46,8 +65,9 @@ function App() {
         ) : (
           <p className="text-center text-gray-500">No se encontraron productos.</p>
         )}
-        <Footer />
+
       </div>
+      <Footer />
     </>
   )
 }
